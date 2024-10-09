@@ -14,43 +14,43 @@ import uuid
 from dotenv import load_dotenv
 
 
-load_dotenv()  # Load environment variables from the .env file
+# load_dotenv()  # Load environment variables from the .env file
 
-AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
-AWS_REGION = os.getenv('AWS_REGION')
-S3_BUCKET_NAME = os.getenv('S3_BUCKET_NAME')
+# AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+# AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+# AWS_REGION = os.getenv('AWS_REGION')
+# S3_BUCKET_NAME = os.getenv('S3_BUCKET_NAME')
 
 
 
-s3_client = boto3.client('s3', aws_access_key_id=AWS_ACCESS_KEY_ID, aws_secret_access_key=AWS_SECRET_ACCESS_KEY, region_name=AWS_REGION)
+# s3_client = boto3.client('s3', aws_access_key_id=AWS_ACCESS_KEY_ID, aws_secret_access_key=AWS_SECRET_ACCESS_KEY, region_name=AWS_REGION)
 
 
 # Function to list all files in the  S3 bucket
-def list_files_in_bucket():
-    try:
-        response = s3_client.list_objects(Bucket=S3_BUCKET_NAME)
-        files = [obj['Key'] for obj in response.get('Contents', [])]
+# def list_files_in_bucket():
+#     try:
+#         response = s3_client.list_objects(Bucket=S3_BUCKET_NAME)
+#         files = [obj['Key'] for obj in response.get('Contents', [])]
 
-        if len(files) > 0:
-            st.header("Files in S3 bucket:")
-            for file in files:
-                st.write(file)
-        else:
-            st.warning("No files found in the S3 bucket.")
+#         if len(files) > 0:
+#             st.header("Files in S3 bucket:")
+#             for file in files:
+#                 st.write(file)
+#         else:
+#             st.warning("No files found in the S3 bucket.")
 
-    except Exception as e:
-        st.error(f"An error occurred while listing objects in S3: {str(e)}")
+#     except Exception as e:
+#         st.error(f"An error occurred while listing objects in S3: {str(e)}")
 
 
 st.sidebar.title("Whatsapp Chat Analyzer")
 
 uploaded_file = st.sidebar.file_uploader("Choose whatsapp text file")
 
-list_files_button = st.button("List Files in S3 Bucket")
+# list_files_button = st.button("List Files in S3 Bucket")
 
-if list_files_button:
-    list_files_in_bucket()
+# if list_files_button:
+#     list_files_in_bucket()
     
 if uploaded_file is not None:
     
@@ -65,7 +65,7 @@ if uploaded_file is not None:
         filename = os.path.join(currpath,file)
 
         # Upload the file to S3
-        s3_client.upload_file(filename, S3_BUCKET_NAME, random_filename)
+        # s3_client.upload_file(filename, S3_BUCKET_NAME, random_filename)
 
         print("File uploaded successfully to S3!")
         st.write("File uploaded successfully to S3!")

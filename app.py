@@ -6,6 +6,7 @@ from wordcloud import WordCloud, STOPWORDS
 import pandas as pd
 import seaborn as sns
 import tempfile
+import setuptools
 import boto3
 from botocore.exceptions import NoCredentialsError
 import os

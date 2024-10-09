@@ -1,4 +1,5 @@
 import pandas as pd
+import setuptools
 
 def extract_user_and_message(row):
     if ':' in row['User_Message']:

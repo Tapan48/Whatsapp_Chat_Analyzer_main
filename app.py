@@ -67,8 +67,8 @@ if uploaded_file is not None:
         # Upload the file to S3
         # s3_client.upload_file(filename, S3_BUCKET_NAME, random_filename)
 
-        print("File uploaded successfully to S3!")
-        st.write("File uploaded successfully to S3!")
+        # print("File uploaded successfully to S3!")
+        # st.write("File uploaded successfully to S3!")
 
     except Exception as e:
         print(f"An error occurred while uploading the file to S3: {str(e)}")
